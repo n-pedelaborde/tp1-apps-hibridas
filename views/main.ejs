@@ -1,0 +1,59 @@
+<%- include('layouts/header', {title: "Acerca de mí" })%>
+<div class="container fondo pb-5">
+    <div class="m-3 p-3 mx-auto text-center">
+        <h2 class="display-6 fw-normal">Acerca de mí</h2>
+    </div>
+    <div class="row">
+        <p class="lead">Mi nombre es Nadine Pedelaborde, tengo 27 años y vivo en Buenos Aires, Argentina.
+        <br>Estudié fotografía, varios idiomas y ahora estoy cursando Diseño Y Programación Web en la Escuela Da
+        Vinci.
+        <br>Tengo experiencia en desarrollo web freelance, habiendo trabajado en el diseño, desarrollo y
+        mantenimiento de sitios web para diversos clientes utilizando HTML, CSS y JS.
+        También realicé sitios web con Bootstrap y Wordpress, incluyendo plug-ins y filtros hechos a medida para
+        cada cliente.
+        </p>
+    </div>
+    <div class="m-3 p-3 mx-auto text-center">
+        <h2 class="display-6 fw-normal" id="proyectos">Mis Proyectos</h2>
+    </div>
+    <div class="row">
+        <% for (let i=0; i < projects.length; i++)
+            { if(projects[i].public==true){ %>
+            <div class="card p-2 ms-3" style="width: 18rem;">
+                <img src="<%= projects[i].img %>" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"><%= projects[i].name %></h5>
+                    <p class="card-text"><%= projects[i].description %></p>
+                    <a href="<%= projects[i].link %>" class="btn btn-primary" target="_blank">Ver en Github</a>
+                </div>
+            </div>
+            <% } } %>
+    </div>
+    <div class="p-3 mx-auto text-center">
+        <h2 class="display-6 fw-normal">Habilidades</h2>
+    </div>
+    <div class="row">
+        <ul class="list-group list-group-flush col-4">
+            <li class="list-group-item">HTML, CSS, JS, PHP, C</li>
+            <li class="list-group-item">Suite Office</li>
+            <li class="list-group-item">Suite Adobe</li>
+            <li class="list-group-item">Figma</li>
+            <li class="list-group-item">Wordpress</li>
+        </ul>
+        <ul class="list-group list-group-flush col-4">
+            <li class="list-group-item">SEO, SEM, Marketing</li>
+            <li class="list-group-item">UX + UI</li>
+            <li class="list-group-item">Diseño Gráfico</li>
+            <li class="list-group-item">Fotografía, Video y Edición</li>
+            <li class="list-group-item">Motion Graphics</li>
+        </ul>
+        <ul class="list-group list-group-flush col-4">
+            <li class="list-group-item">Español - Nativo</li>
+            <li class="list-group-item">Inglés - C2</li>
+            <li class="list-group-item">Portugués - B2</li>
+            <li class="list-group-item">Alemán -B2</li>
+            <li class="list-group-item">Ruso - B1</li>
+        </ul>
+    </div>
+</div>
+<%- include('layouts/footer')%>

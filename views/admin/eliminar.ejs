@@ -1,0 +1,22 @@
+<%- include('../layouts/header', {title: "Eliminar proyecto" })%>
+<div class="container p-0">
+    <h2 class="display-6 fw-normal text-center p-3">¿Borrar proyecto?</h2>
+    <p class="lead text-center">Una vez eliminado, no lo podés recuperar.</p>
+    <div class="row justify-content-center">
+        <div class="card p-2" style="width: 18rem;">
+            <img src="<%= project.img %>" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"><%= project.name %></h5>
+                <p class="card-text"><%= project.description %></p>
+                <a href="<%= project.link %>" class="btn btn-primary">Ver en Github</a>
+            </div>
+        </div>
+        <div class="text-center mt-3 row justify-content-center">
+            <form action="eliminar" method="post" class="col-1">
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+            </form>
+            <div class="col-1"><a href="../../../admin/projects" class="btn btn-success">Cancelar</a></div>
+        </div>
+    </div>
+</div>
+<%- include('../layouts/footer')%>

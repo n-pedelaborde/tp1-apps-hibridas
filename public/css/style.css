@@ -1,0 +1,42 @@
+main{
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+#proyectos{
+    scroll-margin-top: 60px; 
+}
+
+.fondito{
+    background-color: white;
+}
+
+div label input {margin-right: 100px;}
+
+.cat{
+  background-color: #198754;
+  overflow: hidden;
+  float: left;
+}
+
+.cat label {
+  float: left; line-height: 38px;
+  width: 4.5em;
+}
+
+.cat label span {
+  text-align: center;
+  display: block;
+}
+
+.cat label input {
+  display: none;
+  color: #fff !important;
+}
+
+.cat label input + span{color: #fff;}
+
+.action input:checked + span{background-color: #6c757d;}
+
+textarea{
+  resize: none;
+}

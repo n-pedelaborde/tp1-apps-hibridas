@@ -1,0 +1,21 @@
+{
+  "name": "tp1-apps-hibridas",
+  "version": "1.0.0",
+  "description": "tp1 apps hibridas nadine pedelaborde",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "server": "cls && nodemon express.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "mongodb": "^4.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}

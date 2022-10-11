@@ -1,0 +1,35 @@
+<%- include('../layouts/header', {title: "Agregar proyecto" })%>
+<div class="container-fluid p-0">
+    <h2 class="display-6 fw-normal text-center p-3">Agregar proyecto</h2>
+    <form class="row mx-auto w-50" action="nuevo" method="post" enctype="application/x-www-form-urlencoded">
+        <div class="mb-3">
+            <label class="form-label">Nombre del proyecto:</label>
+            <input type="text" class="form-control" name="name">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Descripción:</label>
+            <textarea class="form-control" name="description" rows="5"></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Link al repositorio:</label>
+            <input type="text" class="form-control" name="link">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Url de imagen:</label>
+            <input type="text" class="form-control" name="img">
+        </div>
+        <div class="mb-3">
+            <label class="form-check-label">Público</label>
+            <% if(project.public==true){ %>
+                <input class="form-check-input" type="checkbox" name="public" checked>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" name="public">
+                    <% } %>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-success" type="submit">Guardar cambios</button>
+            <a class="btn btn-secondary" href="../../admin/projects">Cancelar</a>
+        </div>
+    </form>
+</div>
+<%- include('../Layouts/Footer')%>

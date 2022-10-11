@@ -1,0 +1,47 @@
+<%- include('../layouts/header', {title: "Panel de control" })%>
+<div class="container fondo pb-5 w-75 ">
+    <div class="p-3 mx-auto text-center">
+        <h2 class="display-6 fw-normal">Panel de control</h2>
+        <p class="fs-5 ancho">Agregá, editá o borrá proyectos.</p>
+    </div>
+    <p class="fs-5 ancho pb-3"><a href="projects/nuevo">Nuevo proyecto</a></p>
+    <table class="table table-hover justify-content-center m-auto">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Descripción</th>
+                <th>Visibilidad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (let i=0; i < projects.length; i++){ %>
+            <tr>
+                <td><%= projects[i].name %></td>
+                <td class="col-4"><%= projects[i].description %></td>
+                <td><%= projects[i].public == true ? "Público" : "Privado" %></td>
+                <td>
+                <div class="d-flex">
+                    <div class="btn-group mx-1" role="group">
+                        <a type="button" href="projects/<%= projects[i]._id %>/editar" class="btn btn-primary m-auto">Editar</a>
+                        <form action="projects/<%= projects[i]._id %>/publicar" method="post">
+                            <div class="cat action">
+                                <label>
+                                    <% if(projects[i].public==true){ %>
+                                        <input class="form-check-input" type="checkbox" onchange="submit()" name="public" checked><span>Ocultar</span>
+                                    <% } else { %>
+                                        <input class="form-check-input" type="checkbox" onchange="submit()" name="public"><span>Publicar</span>
+                                    <% } %>
+                                </label>
+                            </div>
+                        </form>
+                        <a type="button" href="projects/<%= projects[i]._id %>/eliminar" class="btn btn-danger m-auto">Eliminar</a>
+                    </div>
+                </div>
+                </td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+<%- include('../layouts/footer')%>
