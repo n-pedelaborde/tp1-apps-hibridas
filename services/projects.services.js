@@ -1,26 +1,37 @@
 import { MongoClient, ObjectId } from 'mongodb'
 const client = new MongoClient('mongodb://127.0.0.1:27017')
 
-async function findProjects() {
+const db = client.db('AH_P1')
+const projects = db.collection('Projects')
+const testimonios = db.collection('Testimonios')
+const imagenes = db.collection('Imagenes')
+
+async function findProjects(filter) {
+    const filterQuery = {
+        ...filter
+    }
+    if (filterQuery.tecnologias) {
+        filterQuery.tecnologias = { $regex: filterQuery.tecnologias, $options: 'i' }
+    }
+    // probé varios "Evaluation Query Operators" como $regex pensando que podrían
+    // filtrar por true o false pero ninguno sirvió. Googleando no encontré solución
     return client.connect()
         .then(async function () {
-            const db = client.db('AH_P1')
-            return db.collection('Projects').find().toArray()
+            return projects.find(filterQuery).toArray()
         })
 }
 
 async function findProjectByID(id) {
     return client.connect()
         .then(function () {
-            const db = client.db('AH_P1')
-            return db.collection('Projects').findOne({ _id: ObjectId(id) })
+            return projects.findOne({ _id: ObjectId(id) })
         })
 }
 
 async function editarProject(id, project) {
     return client.connect()
         .then(function () {
-            return client.db('AH_P1').collection('Projects').updateOne({ _id: ObjectId(id) }, { $set: project })
+            return projects.updateOne({ _id: ObjectId(id) }, { $set: project })
         })
 }
 
@@ -28,14 +39,20 @@ async function guardarProject(project) {
     const nuevoProject = { ...project }
     return client.connect()
         .then(function () {
-            return client.db('AH_P1').collection('Projects').insertOne(nuevoProject)
+            return projects.insertOne(nuevoProject)
         })
 }
 
 async function eliminarProject(id) {
     return client.connect()
         .then(function () {
-            return client.db('AH_P1').collection('Projects').deleteOne({ _id: ObjectId(id) })
+            return projects.deleteOne({ _id: ObjectId(id) })
+        })
+        .then(function () {
+            return testimonios.deleteMany({ project_id: ObjectId(id) })
+        })
+        .then(function () {
+            return imagenes.deleteMany({ project_id: ObjectId(id) })
         })
 }
 

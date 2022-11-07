@@ -1,7 +1,7 @@
 {
   "name": "tp1-apps-hibridas",
-  "version": "1.0.0",
-  "description": "tp1 apps hibridas nadine pedelaborde",
+  "version": "2.0.0",
+  "description": "tp2 apps hibridas nadine pedelaborde",
   "type": "module",
   "main": "app.js",
   "scripts": {
